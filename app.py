@@ -4,7 +4,6 @@ import pandas as pd
 import streamlit as st
 from config import empty_config
 from rule_builder import render_rule_builder
-from config import config_from_json
 from batch import (find_dwg_files, evaluate_single_dwg, results_to_dataframe, results_to_detail_dataframe)
 
 
@@ -16,10 +15,7 @@ st.set_page_config(page_title="AutoCAD Evaluator", page_icon="📐", layout="wid
 
 st.title("AutoCAD Evaluator")
 
-st.caption(
-    "Genereer evaluatiecriteria met AI, pas ze handmatig aan "
-    "en evalueer vervolgens AutoCAD DWG-bestanden."
-)
+st.caption("Stel een collectie criteria samen en evalueer vervolgens AutoCAD DWG-bestanden.")
 
 
 # ============================================================
@@ -95,14 +91,19 @@ with tab_criteria:
         if uploaded_json is not None:
             if st.button("JSON laden", width='stretch'):
                 try:
-                    imported_config = config_from_json(uploaded_json.getvalue().decode("utf-8"))
-                    st.session_state.config = imported_config
-                    st.session_state["config_name"] = (imported_config.get("name", ""))
-                    st.session_state["config_description"] = (imported_config.get("description", ""))
+                    imported_config = json.loads(
+                        uploaded_json
+                        .getvalue()
+                        .decode("utf-8")
+                    )
+                    st.session_state.config = (imported_config)
                     st.success("Configuratie geladen.")
                     st.rerun()
-                except (ValueError, TypeError, UnicodeDecodeError) as exc:
-                    st.error(f"JSON kon niet worden geladen: {exc}")
+
+                except Exception as exc:
+                    st.error(
+                        f"JSON kon niet worden geladen: {exc}"
+                    )
 
     with col_download:
         st.download_button(
