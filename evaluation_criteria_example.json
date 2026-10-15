@@ -1,0 +1,134 @@
+{
+  "version": 2,
+  "name": "",
+  "description": "",
+  "criteria": [
+    {
+      "id": "rule_15d58cb0",
+      "name": "Het midden van het voorwiel ligt op coödinaat (x: 100; y: 200.73)",
+      "type": "entity",
+      "enabled": true,
+      "points": 1.0,
+      "entity": "circle",
+      "conditions": [
+        {
+          "property": "center_x",
+          "operator": "equals",
+          "value": 100.0,
+          "tolerance": 0.01
+        },
+        {
+          "property": "center_y",
+          "operator": "equals",
+          "value": 200.73,
+          "tolerance": 0.01
+        }
+      ],
+      "count_operator": "greater_or_equal",
+      "count": 1
+    },
+    {
+      "id": "rule_9067a27a",
+      "name": "Tractor layer rood",
+      "type": "entity",
+      "enabled": true,
+      "points": 1.0,
+      "entity": "line",
+      "conditions": [
+        {
+          "property": "layer",
+          "operator": "equals",
+          "value": "rood",
+          "tolerance": 0.01
+        }
+      ],
+      "count_operator": "greater_or_equal",
+      "count": 1
+    },
+    {
+      "id": "rule_edf75daf",
+      "name": "Wielen layer blauw",
+      "type": "entity",
+      "enabled": true,
+      "points": 1.0,
+      "entity": "circle",
+      "conditions": [
+        {
+          "property": "layer",
+          "operator": "equals",
+          "value": "blauw",
+          "tolerance": 0.01
+        }
+      ],
+      "count_operator": "greater_or_equal",
+      "count": 1
+    },
+    {
+      "id": "rule_6ed0d9d8",
+      "name": "Arcering layer margenta",
+      "type": "entity",
+      "enabled": true,
+      "points": 1.0,
+      "entity": "dimension",
+      "conditions": [
+        {
+          "property": "layer",
+          "operator": "equals",
+          "value": "magenta",
+          "tolerance": 0.01
+        }
+      ],
+      "count_operator": "greater_or_equal",
+      "count": 1
+    },
+    {
+      "id": "rule_91b07e97",
+      "name": "Cirkel met R45",
+      "type": "entity",
+      "enabled": true,
+      "points": 1.0,
+      "entity": "circle",
+      "conditions": [
+        {
+          "property": "radius",
+          "operator": "equals",
+          "value": 45.0,
+          "tolerance": 0.01
+        }
+      ],
+      "count_operator": "greater_or_equal",
+      "count": 1
+    },
+    {
+      "id": "rule_66744749",
+      "name": "Afstand tussen cirkels 285",
+      "type": "relation",
+      "enabled": true,
+      "points": 1.0,
+      "object_a": {
+        "entity": "circle",
+        "point_source": "center",
+        "conditions": []
+      },
+      "object_b": {
+        "entity": "circle",
+        "point_source": "center",
+        "conditions": []
+      },
+      "relation": "x_distance",
+      "value": 285.0,
+      "tolerance": 0.01
+    },
+    {
+      "id": "rule_6e1b3a1c",
+      "name": "Schaal 1/20",
+      "type": "layout",
+      "enabled": true,
+      "points": 1.0,
+      "conditions": {
+        "viewport_scale": 20.0,
+        "viewport_scale_tolerance": 1.0
+      }
+    }
+  ]
+}
